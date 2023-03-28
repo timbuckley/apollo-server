@@ -51,16 +51,11 @@
       matchPaths: ["packages/integration-testsuite/package.json"],
       rangeStrategy: "pin",
     },
-    // We need to support Node v14, so we don't allow ourselves to use type definitions
-    // that would let us write v16-specific code.
+    // We need to support Node v16, so we don't allow ourselves to use type definitions
+    // that would let us write >v16-specific code.
     {
       matchPackageNames: ["@types/node"],
-      allowedVersions: "14.x"
-    },
-    // lru-cache@8 drops support for v16. We can take this when we drop node v14 support.
-    {
-      matchPackageNames: ["lru-cache"],
-      allowedVersions: "7.x"
+      allowedVersions: "16.x"
     },
     // node-fetch v3 only ships as ESM. We currently build as both CommonJS and
     // ESM and we're not going to go ESM-only for a while. So let's stay on v2.
